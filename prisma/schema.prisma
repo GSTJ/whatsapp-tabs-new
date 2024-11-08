@@ -38,13 +38,14 @@ model Message {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    employee   Customer? @relation(fields: [employeeId], references: [id])
+    employee   Employee? @relation(fields: [employeeId], references: [id])
     employeeId String?
 
-    customer   Employee @relation(fields: [customerId], references: [id])
+    customer   Customer @relation(fields: [customerId], references: [id])
     customerId String
 
-    type MessageType
+    mediaType String
+    mediaUrl  String?
 
     status MessageStatus
 

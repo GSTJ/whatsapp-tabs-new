@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
@@ -11,10 +10,21 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default ({
-  children,
-}: Readonly<{ children: React.ReactNode }>) => <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
-    </html>;
+export default ({ children }: Readonly<{ children: React.ReactNode }>) => (
+  <html lang="en" className={`${GeistSans.variable}`}>
+    <head>
+      <link
+        rel="preconnect"
+        href="https://assets.twilio.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="stylesheet"
+        href="https://assets.twilio.com/public_assets/paste-fonts/1.5.2/fonts.css"
+      />
+    </head>
+    <body>
+      <TRPCReactProvider>{children}</TRPCReactProvider>
+    </body>
+  </html>
+);
